@@ -7,7 +7,7 @@ const imgButton = document.querySelector(' img');
 // const h2 = document.querySelectorAll('h2')
 const navElements = document.querySelectorAll('.nav-link');
 const text = document.querySelector('h2')
-
+const destinations = document.querySelectorAll('.destination');
 
 
 //Events 
@@ -23,7 +23,7 @@ imgButton.addEventListener('click', (event) => {
 })
 //3 Mouseover 
 navElements.forEach(nav => {
-   nav.addEventListener('mouseenter', function(event) {
+   nav.addEventListener('mouseover', function(event) {
        event.target.style.color = '#4BA0B5';
        setTimeout(function() {
         event.target.style.color = "";
@@ -48,4 +48,23 @@ window.addEventListener('copy', () => {
        console.log(text)
     })
 })
-
+//7 Scroll 
+window.addEventListener('scroll', function (event) {
+    console.log(`Your scroll count is ${window.scrollY}`)
+})
+//8 Break the links 
+Array.from(document.links).forEach(link => {
+    link.addEventListener('click', function(evt) {
+        evt.preventDefault();
+        alert(`${evt.target.textContent} is not a place that you can visit right now. `)
+    })
+})
+//9&10 Mouseenter and leave 
+for (let destination of destinations ){
+    destination.addEventListener('mouseenter', function (event) {
+        destination.style.fontWeight = 'bold'
+    })
+    destination.addEventListener('mouseleave', function(event) {
+        destination.style.fontWeight = 'initial'
+    })
+}
